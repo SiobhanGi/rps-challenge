@@ -6,7 +6,6 @@ require 'simplecov'
 require 'simplecov-console'
 # logic layer files
 require 'player'
-require 'choices'
 require 'game'
 # sequences for feature tests
 require_relative './features/web_helper'

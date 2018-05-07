@@ -1,19 +1,29 @@
-require_relative 'choices'
 require_relative 'player'
 
 class Game
-  attr_reader :player, :rps
-  def initialize(player=Player.new, rps = Choices.new)
+  WEAPONS = [:rock, :paper, :scissors]
+
+  RULES = {
+  scissors: { paper: :win, rock: :lose, scissors: :draw },
+      rock: { paper: :lose, rock: :draw, scissors: :win },
+     paper: { paper: :draw, rock: :win, scissors: :lose }
+    }
+
+  attr_reader :player, :user_choice, :computer_choice
+
+  def initialize(player=Player.new, user_choice='scissors')
     @player = player
-    @rps = rps
+    @user_choice = user_choice.to_sym
+    @computer_choice = random
   end
 
+
   def outcome
-    @rps.choice.each do |match|
-      if match[:user_choice] == @rps.user_choice && match[:computer_choice] == @rps.computer_choice
-        return match[:user_outcome]
-      end
-    end
+    RULES[@user_choice][@computer_choice].to_s
+  end
+
+  def random
+    WEAPONS.sample
   end
 
 end
