@@ -1,1 +1,14 @@
-<%= $player.name %>
+<div style='font-family:"Sans-serif", arial, verdana; color:#50d0e4; margin-left: 30px;'>
+<h2 style='border: 3px dotted orange; border-radius: 10px; display:inline-block; padding: 5px;'><%= $player.name %></h2>
+
+<!-- buttons -->
+
+<h2 style='padding-bottom: 10px'>Which choice will you make?</h2>
+  <div>
+    <form action='/choices' method='post'>
+      <button name='user_choice' type='submit' value='rock'>Rock</button>
+      <button name='user_choice' type='submit' value='paper'>Paper</button>
+      <button name='user_choice' type='submit' value='scissors'>Scissors</button>
+    </form>
+  </div>
+</div>
